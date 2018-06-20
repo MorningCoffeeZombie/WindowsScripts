@@ -1,0 +1,99 @@
+Windows Registry Editor Version 5.00
+;Useful links: https://www.howtogeek.com/howto/37920/the-50-best-registry-hacks-that-make-windows-better/
+
+
+;ADMIN POWERS
+
+
+;Add a "Take Ownership" option to the right click menu. This will give you admin rights over the files/folders applied to
+[HKEY_CLASSES_ROOT\*\shell\runas]
+@="Take Ownership"
+"NoWorkingDirectory"=""
+[HKEY_CLASSES_ROOT\*\shell\runas\command]
+@="cmd.exe /c takeown /f \"%1\" && icacls \"%1\" /grant administrators:F"
+"IsolatedCommand"="cmd.exe /c takeown /f \"%1\" && icacls \"%1\" /grant administrators:F"
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@="Take Ownership"
+"NoWorkingDirectory"=""
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
+"IsolatedCommand"="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
+
+;Reenabled a disabled Task Manager
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisableTaskMgr"=dword:00000000
+
+
+;ANNOYANCE/CONVENIENCE
+
+
+;Do not restart PC to install an update if user is logged in
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"NoAutoRebootWithLoggedOnUsers"=dword:00000001
+
+;Stop bugging user to upgrade to the next Windows OS
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DisableOSUpgrade"=dword:00000001
+
+;For unknown file types: do not ask if you'd like to search online for the answer
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoInternetOpenWith"=dword:00000001
+
+;Stop Windows from turning the sleep/hibernate/etc button into a sort of "Update and restart" button
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"NoAUAsDefaultShutdownOption"=dword:00000001
+
+;Disable AeroPeek (sets it to a very long time). AeroPeek shows desktop when hovering over taskbar.
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"DesktopLivePreviewHoverTime"=dword:ffffffff
+
+;Disable the Thumbnail previews
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ExtendedUIHoverTime"=dword:00030000
+
+;Don't hide known file extensions
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"HideFileExt"=dword:00000000
+
+;Replaces the default "- Shortcut" text added to newly created file shortcuts
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"link"=hex:00,00,00,00
+
+;Remove the "Libraries" shortcuts from Windows Explorer windows
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
+
+;Completely remove "Windows Libraries". This is commented out as it may be a bit of overkill for my uses
+;[-HKEY_CLASSES_ROOT\CLSID\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
+;[-HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{2112AB0A-C86A-4ffe-A368-0DE96E47012E}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{491E922F-5643-4af4-A7EB-4E7A138D8174}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{7b0db17d-9cd2-4a93-9733-46cc89022e7c}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{A302545D-DEFF-464b-ABE8-61C8648D939B}]
+;[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{A990AE9F-A03B-4e80-94BC-9912D7504104}]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+;"{031E4825-7B94-4dc3-B131-E946B44C8DD5}"=-
+
+;Stop windows taskbars from flashing
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"ForegroundFlashCount"=dword:00000000
+
+
+
+;SPEED BOOSTS
+
+
+;Eliminate the delay before Windows shows you menu contents (in miliseconds). Restart req'd to install/uninstall.
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"MenuShowDelay"="000"
+
+;Disable the startup delay in Microsoft. The delay is meant to give apps a head start on running as Windows boots or logs in
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
+"StartupDelayInMSec"=dword:00000000
+
+;The following are supposed to boost internet connection...their techniques were not used here because the defaults are not listed and custom program settings may actually work better
+;https://www.techrepublic.com/blog/10-things/10-common-issues-you-can-fix-with-a-registry-hack/
+;https://support.microsoft.com/en-us/help/282402/how-do-i-configure-internet-explorer-to-download-more-than-two-files-a
+
+
+
