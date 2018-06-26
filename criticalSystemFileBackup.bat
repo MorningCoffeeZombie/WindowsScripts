@@ -26,6 +26,7 @@ SET zipName=_%COMPUTERNAME%_%~n0_%isoDate%-%militaryTime%
 :: Don't overwrite existing file if there's a conflict. Yes, it will kill the script but it's unlikely that, the next time it runs, there will be a folder with the same ISO Date timestand in it's name
 IF EXIST %storageDir%\%zipName%.zip (
 	echo %logStamp% A file with the name of "%zipName%.zip" already exists. Exiting Program. >>%logFile%
+	echo ******************************************************************************** >>%logFile% 
 	EXIT
 )  
 
@@ -62,7 +63,7 @@ IF EXIST %~dp0%zipName%\server\configuration\HPM\webdefinitions (
 
 echo %logStamp% Beginning compression of files at %TIME% >>%logFile% 
 7z a -tzip %zipName%.zip %zipName% -sdel
-echo %logStamp% Files have been has been copied to %zipName%.zip as of %TIME% >>%logFile% 
+echo %logStamp% Files have been copied to %zipName%.zip as of %TIME% >>%logFile% 
 
 
 
@@ -109,9 +110,9 @@ EXIT
 :: Find out what server we're on so that the backup is named properly
 ::IF "%COMPUTERNAME%"=="P1-PIMPROD" (
 ::	SET zipName=_PROD_%~n0_%isoDate%
-::	echo %logStamp% %~nx0 has dectected that this is the PRODUCTION server. Backup to be named _PROD_criticalSystemFileBackup_%isoDate% >>%logFile%
+::	echo %logStamp% %~nx0 has detected that this is the PRODUCTION server. Backup to be named _PROD_criticalSystemFileBackup_%isoDate% >>%logFile%
 ::	) ELSE IF "%COMPUTERNAME%"=="P1-PIM" (
 ::		SET zipName=_DEV_%~n0_%isoDate%
-::		echo %logStamp% %~nx0 has dectected that this is the DEV/TEST server. Backup to be named _DEV_criticalSystemFileBackup_%isoDate% >>%logFile%
+::		echo %logStamp% %~nx0 has detected that this is the DEV/TEST server. Backup to be named _DEV_criticalSystemFileBackup_%isoDate% >>%logFile%
 ::	) 
 
