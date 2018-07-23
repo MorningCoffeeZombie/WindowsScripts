@@ -45,6 +45,13 @@ Windows Registry Editor Version 5.00
 ;See the separate .reg file titled "restore_windows_libarries.reg"
 
 
+; Reenable Windows prompt when changing a file's extension.
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"ConsentPromptBehaviorAdmin"=dword:00000000
+"ConsentPromptBehaviorUser"=dword:00000003
+; Admin value should be 0 and User should be 3 per defaults
+
+
 ;SPEED BOOSTS
 
 
