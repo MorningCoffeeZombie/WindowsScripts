@@ -87,6 +87,11 @@ Windows Registry Editor Version 5.00
 "ConsentPromptBehaviorAdmin"=dword:00000000
 "ConsentPromptBehaviorUser"=dword:00000000
 
+; Remove the "Share With..." option from right click menu.
+[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\Sharing]
+@="-{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
+
+
 
 
 ;SPEED BOOSTS
