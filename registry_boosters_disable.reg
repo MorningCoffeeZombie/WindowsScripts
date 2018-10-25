@@ -51,6 +51,15 @@ Windows Registry Editor Version 5.00
 "ConsentPromptBehaviorUser"=dword:00000003
 ; Admin value should be 0 and User should be 3 per defaults
 
+; Undo Windows focusing on the window that is under the cursor (similar to X11 in Linux)
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"ActiveWindowTracking"=dword:00000000
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"UserPreferencesMask"=hex:9e,3e,07,80,12,00,00,00
+
+
+
 
 ;SPEED BOOSTS
 
