@@ -92,6 +92,8 @@ Windows Registry Editor Version 5.00
 @="-{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"
 
 ; Make Windows focus on the window that is under the cursor (similar to X11 in Linux)
+; https://sinewalker.wordpress.com/2010/03/10/ms-windows-focus-follows-mouse-registry-hacks/
+; https://arstechnica.com/civis/viewtopic.php?p=23088086
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "ActiveWindowTracking"=dword:00000001
 
