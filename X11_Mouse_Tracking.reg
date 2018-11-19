@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"ActiveWindowTracking"=dword:00000001
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"ActiveWndTrackTimeout"=dword:00000128
+"UserPreferencesMask"=hex:9e,3e,07,80,12,00,00,00
+
+
+
+; https://sinewalker.wordpress.com/2010/03/10/ms-windows-focus-follows-mouse-registry-hacks/
+; https://arstechnica.com/civis/viewtopic.php?p=23088086
